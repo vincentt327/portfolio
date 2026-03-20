@@ -73,6 +73,26 @@ body.hov #cur{transform:translate(-50%,-50%) rotate(45deg) scale(0.4)}
 .pm-watch:hover{background:rgba(0,194,255,.12);box-shadow:0 0 14px rgba(0,194,255,.3)}
 .pm-placeholder{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(0,194,255,.06),transparent);border:1px dashed rgba(0,194,255,.2);display:flex;align-items:center;justify-content:center}
 .pm-placeholder span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--muted2)}
+/* SLIDE VIEWER */
+.sv{position:relative;width:100%;background:#000;user-select:none}
+.sv-main{position:relative;overflow:hidden;aspect-ratio:16/9}
+.sv-track{display:flex;transition:transform .45s cubic-bezier(.16,1,.3,1);height:100%}
+.sv-slide{flex:0 0 100%;height:100%}
+.sv-slide img{width:100%;height:100%;object-fit:contain;display:block}
+.sv-prev,.sv-next{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:44px;height:44px;background:rgba(2,10,18,.8);border:1px solid rgba(0,194,255,.3);display:flex;align-items:center;justify-content:center;cursor:none;transition:background .25s,border-color .25s;font-family:var(--mono);color:var(--blue);font-size:16px}
+.sv-prev{left:12px}.sv-next{right:12px}
+.sv-prev:hover,.sv-next:hover{background:rgba(0,194,255,.15);border-color:var(--blue)}
+.sv-prev.off,.sv-next.off{opacity:.25;pointer-events:none}
+.sv-hud{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:rgba(2,10,18,.9);border-top:1px solid var(--b2)}
+.sv-counter{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--blue)}
+.sv-title{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--muted);text-align:center;flex:1;padding:0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sv-keys{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--muted2)}
+.sv-thumbs{display:flex;gap:4px;padding:12px 16px;background:rgba(2,10,18,.95);overflow-x:auto;border-top:1px solid var(--b2)}
+.sv-thumbs::-webkit-scrollbar{height:3px}.sv-thumbs::-webkit-scrollbar-thumb{background:var(--muted2)}
+.sv-thumb{flex:0 0 80px;height:45px;overflow:hidden;border:1px solid var(--b2);cursor:none;transition:border-color .2s,opacity .2s;opacity:.5}
+.sv-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.sv-thumb.on{border-color:var(--blue);opacity:1;box-shadow:0 0 8px rgba(0,194,255,.3)}
+.sv-thumb:hover{opacity:.8}
 @media(max-width:900px){.pm-inner{padding:80px 28px 60px}.pm-item{grid-template-columns:1fr}.pm-item:nth-child(even){direction:ltr}}
 /* HOME */
 .hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:0 64px;position:relative;overflow:hidden}
@@ -123,9 +143,9 @@ body.hov #cur{transform:translate(-50%,-50%) rotate(45deg) scale(0.4)}
 .bg-flex{background:url('https://img.youtube.com/vi/vjpkkDWBAQQ/maxresdefault.jpg') center/cover no-repeat}
 .bg-esportsvid{background:url('https://img.youtube.com/vi/aWPZUOY9Q3I/maxresdefault.jpg') center/cover no-repeat}
 .bg-podcast{background:url('https://img.youtube.com/vi/g96rDo0epWQ/maxresdefault.jpg') center/cover no-repeat}
-.bg-yasuke{background:radial-gradient(ellipse at 50% 50%,rgba(180,100,0,.4),rgba(0,0,0,.95)),linear-gradient(135deg,#0a0500,#020A12)}
-.bg-daylife{background:radial-gradient(ellipse at 40% 60%,rgba(220,200,0,.35),rgba(2,10,18,.95)),linear-gradient(135deg,#0a0900,#020A12)}
-.bg-blm{background:radial-gradient(ellipse at 50% 70%,rgba(40,40,40,.8),rgba(0,0,0,.98)),linear-gradient(135deg,#050505,#020A12)}
+.bg-yasuke{background:url('images/slide-yasuke-01.png') center/cover no-repeat}
+.bg-daylife{background:url('images/slide-daylife-01.png') center/cover no-repeat}
+.bg-blm{background:url('images/slide-blm-01.png') center/cover no-repeat}
 .wtag{position:absolute;top:20px;left:20px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--blue);padding:4px 12px;border:1px solid rgba(0,194,255,.3);background:rgba(2,10,18,.7);z-index:2}
 .wov{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,10,18,.97),rgba(2,10,18,.5) 55%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:36px;opacity:0;border:1px solid transparent;transition:opacity .45s,border-color .45s}
 .wi:hover .wov{opacity:1;border-color:var(--b1)}
@@ -512,13 +532,13 @@ var projects={
   podcast:{cat:'VIDEO PRODUCTION // EDUCATION',title:'In Living Colours Podcast',desc:"As a part of the education stream in Capgemini's Race &amp; Equality network, we took to making a video podcast to help educate the viewer on different cultures. All footage was recorded via Teams and I am very proud of the result given the limitations!",items:[
     {img:'https://img.youtube.com/vi/g96rDo0epWQ/maxresdefault.jpg',watch:'https://youtu.be/g96rDo0epWQ',title:'In Living Colours &mdash; Video Podcast Series',desc:"A video podcast series produced as part of REN's education stream. Recorded entirely over Microsoft Teams &mdash; extremely proud of what was achieved within those constraints.",tags:['Premiere Pro','Video Production','Podcast','DEI','REN']}
   ]},
-  daylife:{cat:'INTERACTIVE PRESENTATION // DEI',title:'A Day in Your Life: A Black Experience',desc:"An interactive scenario-based presentation with branching narrative paths, designed to immerse participants in the day-to-day experiences of Black colleagues. All paths are based on real-life examples.",items:[
+  daylife:{cat:'INTERACTIVE PRESENTATION // DEI',title:'A Day in Your Life: A Black Experience',desc:"An interactive scenario-based presentation with branching narrative paths, designed to immerse participants in the day-to-day experiences of Black colleagues. All paths are based on real-life examples.",slides:[IMG+'slide-daylife-01.png',IMG+'slide-daylife-02.png',IMG+'slide-daylife-03.png',IMG+'slide-daylife-04.png',IMG+'slide-daylife-05.png',IMG+'slide-daylife-06.png',IMG+'slide-daylife-07.png',IMG+'slide-daylife-08.png',IMG+'slide-daylife-09.png',IMG+'slide-daylife-10.png',IMG+'slide-daylife-11.png',IMG+'slide-daylife-12.png',IMG+'slide-daylife-13.png',IMG+'slide-daylife-14.png',IMG+'slide-daylife-15.png',IMG+'slide-daylife-16.png',IMG+'slide-daylife-17.png',IMG+'slide-daylife-18.png',IMG+'slide-daylife-19.png',IMG+'slide-daylife-20.png',IMG+'slide-daylife-21.png',IMG+'slide-daylife-22.png',IMG+'slide-daylife-23.png',IMG+'slide-daylife-24.png',IMG+'slide-daylife-25.png',IMG+'slide-daylife-26.png',IMG+'slide-daylife-27.png',IMG+'slide-daylife-28.png'],items:[
     {img:null,title:'Scenario I &mdash; A Black Experience',desc:'Walking participants through a day as a Black employee and presenting branching choices that reveal real consequences of workplace bias, microaggressions and systemic barriers.',tags:['PowerPoint','Interactive Design','DEI','REN']}
   ]},
-  yasuke:{cat:'PRESENTATION DESIGN // STORYTELLING',title:'Yasuke: The African Samurai',desc:'Yasuke was an African warrior who served as a Samurai under the Japanese warlord Oda Nobunaga in the late 16th century. His story is one of cultural exchange, resilience, and remarkable achievement.',items:[
+  yasuke:{cat:'PRESENTATION DESIGN // STORYTELLING',title:'Yasuke: The African Samurai',desc:'Yasuke was an African warrior who served as a Samurai under the Japanese warlord Oda Nobunaga in the late 16th century. His story is one of cultural exchange, resilience, and remarkable achievement.',slides:[IMG+'slide-yasuke-01.png',IMG+'slide-yasuke-02.png',IMG+'slide-yasuke-03.png',IMG+'slide-yasuke-04.png',IMG+'slide-yasuke-05.png',IMG+'slide-yasuke-06.png',IMG+'slide-yasuke-07.png',IMG+'slide-yasuke-08.png',IMG+'slide-yasuke-09.png',IMG+'slide-yasuke-10.png',IMG+'slide-yasuke-11.png',IMG+'slide-yasuke-12.png'],items:[
     {img:null,title:'Yasuke &mdash; The African Samurai',desc:'A cinematic presentation exploring the extraordinary life of Yasuke &mdash; the first recorded non-Japanese samurai. Bold typography, dramatic imagery and compelling narrative structure.',tags:['PowerPoint','Presentation Design','Storytelling','History']}
   ]},
-  blm:{cat:'PRESENTATION DESIGN // DEI WORKSHOP',title:'Black Lives Matter',desc:'A DEI awareness presentation built around a structured two-session workshop facilitation framework. All paths and discussions are grounded in real-life examples.',items:[
+  blm:{cat:'PRESENTATION DESIGN // DEI WORKSHOP',title:'Black Lives Matter',desc:'A DEI awareness presentation built around a structured two-session workshop facilitation framework. All paths and discussions are grounded in real-life examples.',slides:[IMG+'slide-blm-01.png',IMG+'slide-blm-02.png',IMG+'slide-blm-03.png',IMG+'slide-blm-04.png',IMG+'slide-blm-05.png',IMG+'slide-blm-06.png',IMG+'slide-blm-07.png',IMG+'slide-blm-08.png'],items:[
     {img:null,title:'Blue Ghost Blues &amp; Little Red Rooster',desc:'A two-session DEI facilitation framework: Session One guides participants through lived experiences; Session Two moves toward action-planning and organisational change.',tags:['PowerPoint','Facilitation','DEI','Workshop Design']}
   ]}
 };
@@ -530,18 +550,24 @@ function openProject(id){
   var h='<div class="pm-cat">'+p.cat+'</div>';
   h+='<div class="pm-title">'+p.title+'</div>';
   h+='<div class="pm-desc">'+p.desc+'</div>';
-  h+='<div class="pm-divider"></div><div class="pm-gallery">';
-  for(var i=0;i<p.items.length;i++){
-    var it=p.items[i],num=(i+1<10?'0':'')+(i+1);
-    h+='<div class="pm-item"><div class="pm-img-wrap">';
-    if(it.img){h+='<img class="pm-img" src="'+it.img+'" alt="'+it.title+'" loading="lazy">';}
-    else{h+='<div class="pm-placeholder"><span>// IMAGE COMING SOON</span></div>';}
-    h+='</div><div class="pm-img-info"><div class="pm-img-num">// '+num+'</div><div class="pm-img-title">'+it.title+'</div><div class="pm-img-desc">'+it.desc+'</div>';
-    if(it.tags){h+='<div class="pm-tags">';for(var j=0;j<it.tags.length;j++)h+='<span class="pm-tag">'+it.tags[j]+'</span>';h+='</div>';}
-    if(it.watch){h+='<a class="pm-watch" href="'+it.watch+'" target="_blank" rel="noopener">Watch on YouTube &nbsp;&#8599;</a>';}
-    h+='</div></div>';
+  h+='<div class="pm-divider"></div>';
+  // Slide viewer if project has slides
+  if(p.slides&&p.slides.length){
+    h+=buildSlideViewer(p.slides,p.title);
+  } else {
+    h+='<div class="pm-gallery">';
+    for(var i=0;i<p.items.length;i++){
+      var it=p.items[i],num=(i+1<10?'0':'')+(i+1);
+      h+='<div class="pm-item"><div class="pm-img-wrap">';
+      if(it.img){h+='<img class="pm-img" src="'+it.img+'" alt="'+it.title+'" loading="lazy">';}
+      else{h+='<div class="pm-placeholder"><span>// IMAGE COMING SOON</span></div>';}
+      h+='</div><div class="pm-img-info"><div class="pm-img-num">// '+num+'</div><div class="pm-img-title">'+it.title+'</div><div class="pm-img-desc">'+it.desc+'</div>';
+      if(it.tags){h+='<div class="pm-tags">';for(var j=0;j<it.tags.length;j++)h+='<span class="pm-tag">'+it.tags[j]+'</span>';h+='</div>';}
+      if(it.watch){h+='<a class="pm-watch" href="'+it.watch+'" target="_blank" rel="noopener">Watch on YouTube &nbsp;&#8599;</a>';}
+      h+='</div></div>';
+    }
+    h+='</div>';
   }
-  h+='</div>';
   pmInner.innerHTML=h;modal.scrollTop=0;modal.classList.add('on');
 }
 function closeModal(){modal.classList.remove('on');}
@@ -570,6 +596,72 @@ function initSkillBars(id){if(id!=='about')return;var c=document.getElementById(
 /* COORD */
 function typeCoord(){var el=document.getElementById('coord-tl');if(!el)return;var full=el.textContent;el.textContent='';var i=0;var t=setInterval(function(){if(i<full.length)el.textContent=full.slice(0,++i);else clearInterval(t);},30);}
 window.addEventListener('load',function(){runPipe();});
+
+/* SLIDE VIEWER */
+function buildSlideViewer(slides, title){
+  if(!slides||!slides.length)return'<div class="pm-placeholder"><span>// SLIDES COMING SOON</span></div>';
+  var id='sv'+Date.now();
+  var h='<div class="sv" id="'+id+'">';
+  // Main display
+  h+='<div class="sv-main"><div class="sv-track" id="'+id+'-track">';
+  for(var i=0;i<slides.length;i++){
+    h+='<div class="sv-slide"><img src="'+slides[i]+'" alt="Slide '+(i+1)+'" loading="lazy"></div>';
+  }
+  h+='</div>';
+  h+='<div class="sv-prev off" id="'+id+'-prev">&#8592;</div>';
+  h+='<div class="sv-next" id="'+id+'-next">&#8594;</div>';
+  h+='</div>';
+  // HUD
+  h+='<div class="sv-hud">';
+  h+='<div class="sv-counter" id="'+id+'-count">01 / '+String(slides.length).padStart(2,'0')+'</div>';
+  h+='<div class="sv-title">'+title+'</div>';
+  h+='<div class="sv-keys">&#8592; &#8594; to navigate</div>';
+  h+='</div>';
+  // Thumbnails
+  h+='<div class="sv-thumbs" id="'+id+'-thumbs">';
+  for(var i=0;i<slides.length;i++){
+    h+='<div class="sv-thumb'+(i===0?' on':'')+'" data-idx="'+i+'"><img src="'+slides[i]+'" alt="'+( i+1)+'" loading="lazy"></div>';
+  }
+  h+='</div></div>';
+
+  // Init after render
+  setTimeout(function(){
+    var el=document.getElementById(id);
+    if(!el)return;
+    var track=document.getElementById(id+'-track');
+    var prev=document.getElementById(id+'-prev');
+    var next=document.getElementById(id+'-next');
+    var count=document.getElementById(id+'-count');
+    var thumbs=document.getElementById(id+'-thumbs');
+    var cur=0,total=slides.length;
+
+    function go(n){
+      cur=Math.max(0,Math.min(n,total-1));
+      track.style.transform='translateX(-'+cur*100+'%)';
+      count.textContent=String(cur+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
+      prev.classList.toggle('off',cur===0);
+      next.classList.toggle('off',cur===total-1);
+      // thumbs
+      var ts=thumbs.querySelectorAll('.sv-thumb');
+      ts.forEach(function(t){t.classList.remove('on');});
+      ts[cur].classList.add('on');
+      // scroll thumb into view
+      ts[cur].scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'});
+    }
+    prev.addEventListener('click',function(){go(cur-1);});
+    next.addEventListener('click',function(){go(cur+1);});
+    thumbs.querySelectorAll('.sv-thumb').forEach(function(t){
+      t.addEventListener('click',function(){go(parseInt(t.dataset.idx));});
+    });
+    // keyboard — only when modal is open
+    document.addEventListener('keydown',function(e){
+      if(!document.getElementById('proj-modal').classList.contains('on'))return;
+      if(e.key==='ArrowRight')go(cur+1);
+      if(e.key==='ArrowLeft')go(cur-1);
+    });
+  },100);
+  return h;
+}
 }());
 </script>
 </body>
