@@ -69,6 +69,8 @@ body.hov #cur{transform:translate(-50%,-50%) rotate(45deg) scale(0.4)}
 .pm-img-desc{font-family:var(--head);font-size:15px;font-weight:300;color:rgba(214,238,248,.75);line-height:1.85}
 .pm-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
 .pm-tag{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--muted);padding:3px 10px;border:1px solid var(--b2)}
+.pm-watch{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--blue);text-decoration:none;padding:10px 20px;border:1px solid rgba(0,194,255,.4);background:rgba(0,194,255,.05);transition:background .3s,box-shadow .3s}
+.pm-watch:hover{background:rgba(0,194,255,.12);box-shadow:0 0 14px rgba(0,194,255,.3)}
 .pm-placeholder{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(0,194,255,.06),transparent);border:1px dashed rgba(0,194,255,.2);display:flex;align-items:center;justify-content:center}
 .pm-placeholder span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--muted2)}
 @media(max-width:900px){.pm-inner{padding:80px 28px 60px}.pm-item{grid-template-columns:1fr}.pm-item:nth-child(even){direction:ltr}}
@@ -114,13 +116,13 @@ body.hov #cur{transform:translate(-50%,-50%) rotate(45deg) scale(0.4)}
 .wthumb{aspect-ratio:4/3;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .wbg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .9s cubic-bezier(.16,1,.3,1)}.wi:hover .wbg{transform:scale(1.06)}
 .bg-digi{background-image:url('images/ninja-light.png');background-size:cover;background-position:center}
-.bg-infographic{background:radial-gradient(ellipse at 50% 80%,rgba(0,120,200,.4),rgba(2,10,18,.95)),linear-gradient(135deg,#020A12,#051520)}
-.bg-logo{background:radial-gradient(ellipse at 30% 60%,rgba(80,0,160,.4),rgba(2,10,18,.95)),linear-gradient(135deg,#080520,#020A12)}
-.bg-mraw{background:radial-gradient(ellipse at 70% 40%,rgba(180,0,80,.35),rgba(2,10,18,.95)),linear-gradient(135deg,#120008,#020A12)}
-.bg-ren{background:radial-gradient(ellipse at 40% 60%,rgba(0,80,180,.4),rgba(2,10,18,.95)),linear-gradient(135deg,#020A12,#04102a)}
-.bg-flex{background:radial-gradient(ellipse at 60% 30%,rgba(0,160,120,.3),rgba(2,10,18,.95)),linear-gradient(135deg,#021510,#020A12)}
-.bg-esportsvid{background:radial-gradient(ellipse at 30% 70%,rgba(100,0,200,.4),rgba(2,10,18,.95)),linear-gradient(135deg,#08001a,#020A12)}
-.bg-podcast{background:radial-gradient(ellipse at 60% 50%,rgba(0,140,100,.3),rgba(2,10,18,.95)),linear-gradient(135deg,#021510,#020A12)}
+.bg-infographic{background:url('images/infographic-hmrc.jpg') center/cover no-repeat}
+.bg-logo{background:url('images/logo-egoproblems.png') center/cover no-repeat}
+.bg-mraw{background:url('https://img.youtube.com/vi/79881Y-wWZ4/maxresdefault.jpg') center/cover no-repeat}
+.bg-ren{background:url('https://img.youtube.com/vi/fft1D-Wd4uE/maxresdefault.jpg') center/cover no-repeat}
+.bg-flex{background:url('https://img.youtube.com/vi/vjpkkDWBAQQ/maxresdefault.jpg') center/cover no-repeat}
+.bg-esportsvid{background:url('https://img.youtube.com/vi/aWPZUOY9Q3I/maxresdefault.jpg') center/cover no-repeat}
+.bg-podcast{background:url('https://img.youtube.com/vi/g96rDo0epWQ/maxresdefault.jpg') center/cover no-repeat}
 .bg-yasuke{background:radial-gradient(ellipse at 50% 50%,rgba(180,100,0,.4),rgba(0,0,0,.95)),linear-gradient(135deg,#0a0500,#020A12)}
 .bg-daylife{background:radial-gradient(ellipse at 40% 60%,rgba(220,200,0,.35),rgba(2,10,18,.95)),linear-gradient(135deg,#0a0900,#020A12)}
 .bg-blm{background:radial-gradient(ellipse at 50% 70%,rgba(40,40,40,.8),rgba(0,0,0,.98)),linear-gradient(135deg,#050505,#020A12)}
@@ -488,27 +490,27 @@ var projects={
     {img:IMG+'ninja-light.png',title:'Become a Proposal Ninja &mdash; Light Version',desc:'The brighter, character-led companion piece &mdash; a cartoon ninja wielding a laptop against an illustrated Japanese-inspired backdrop. Two very different treatments for the same campaign.',tags:['Photoshop','Digital Signage','Internal Comms']}
   ]},
   infographic:{cat:'DATA VISUALISATION // INFOGRAPHIC',title:'HMRC Organisational Infographic',desc:'There have been a few opportunities to create more in-depth graphics such as infographics. These are some of my favourite things to make in graphic design as I really appreciate how many small parts contribute to the big picture.',items:[
-    {img:null,title:'HMRC Market Unit Organisational Structure',desc:'An isometric city-style infographic mapping the full HMRC Market Unit organisational structure &mdash; covering Portfolios of Work, People, Practices and all major departments.',tags:['Illustrator','Infographic','Data Visualisation','HMRC']}
+    {img:IMG+'infographic-hmrc.jpg',title:'HMRC Market Unit Organisational Structure',desc:'An isometric city-style infographic mapping the full HMRC Market Unit organisational structure &mdash; covering Portfolios of Work, People, Practices and all major departments. One of those deeply satisfying projects where every small detail contributes to the whole.',tags:['Illustrator','Infographic','Data Visualisation','HMRC']}
   ]},
   logos:{cat:'BRAND IDENTITY // LOGO DESIGN',title:'Logo Design',desc:'Logos are a rarer opportunity but they are always fun to do! These are a mix of both personal and professional projects but all created with equal amounts of effort and pre-work.',items:[
-    {img:null,title:'Crash Course',desc:'Logo for the Crash Course learning platform &mdash; "Hands-On Learning. Building Capability." Clean, tech-forward design communicating accessible, practical education.',tags:['Illustrator','Logo Design']},
-    {img:null,title:'Diamond Comet',desc:'Bold typographic logo for Diamond Comet &mdash; a personal project exploring dynamic, energetic brand identity.',tags:['Illustrator','Logo Design']},
-    {img:null,title:'EgoProblems',desc:'Character-led logo design for EgoProblems &mdash; a playful, irreverent brand identity built around a distinctive illustrated mascot.',tags:['Illustrator','Logo Design','Character Design']}
+    {img:IMG+'logo-crashcourse.png',title:'Crash Course',desc:'Logo for the Crash Course learning platform &mdash; "Hands-On Learning. Building Capability." Clean, tech-forward design communicating accessible, practical education.',tags:['Illustrator','Logo Design']},
+    {img:IMG+'logo-diamondcomet.png',title:'Diamond Comet',desc:'Bold typographic logo for Diamond Comet &mdash; a personal project exploring dynamic, energetic brand identity with strong visual impact.',tags:['Illustrator','Logo Design']},
+    {img:IMG+'logo-egoproblems.png',title:'EgoProblems',desc:'Character-led logo design for EgoProblems &mdash; a playful, irreverent brand identity built around a distinctive illustrated mascot character.',tags:['Illustrator','Logo Design','Character Design']}
   ]},
   mraw:{cat:'VIDEO DIRECTION // DEI CAMPAIGN',title:'REN: Multi Racial Awareness Week',desc:'A project which was much more personal for me. I spearheaded a campaign to promote Multi Racial Awareness Week. As part of the campaign, I directed as well as starred in a video featuring fellow bi (or multi) racial heritages. I am extremely proud of the result.',items:[
-    {img:null,title:'Multi Racial Awareness Week Campaign Video',desc:'Directed and starred in a short film created to promote Multi Racial Awareness Week &mdash; a deeply personal project celebrating bi and multi-racial identities within the Capgemini community.',tags:['Premiere Pro','Video Direction','DEI','REN']}
+    {img:'https://img.youtube.com/vi/79881Y-wWZ4/maxresdefault.jpg',watch:'https://youtu.be/79881Y-wWZ4',title:'Multi Racial Awareness Week Campaign Video',desc:'Directed and starred in a short film created to promote Multi Racial Awareness Week &mdash; a deeply personal project celebrating bi and multi-racial identities within the Capgemini community.',tags:['Premiere Pro','Video Direction','DEI','REN']}
   ]},
   renwork:{cat:'VIDEO PRODUCTION // DEI CAMPAIGN',title:'REN: Working at Capgemini',desc:"As part of Capgemini's Race &amp; Equality Network campaign to generate a conversation about the experiences of people of colour in the workplace, videos were made showcasing different staff members. I was in the director's seat as well as being nominated to star in one!",items:[
-    {img:null,title:'Staff Showcase Video Series',desc:"A series of videos produced to generate open conversation about the experiences of people of colour at Capgemini. Served as both director and on-screen talent.",tags:['Premiere Pro','Video Production','DEI','REN']}
+    {img:'https://img.youtube.com/vi/fft1D-Wd4uE/maxresdefault.jpg',watch:'https://youtu.be/fft1D-Wd4uE',title:'Staff Showcase Video Series',desc:"A series of videos produced to generate open conversation about the experiences of people of colour at Capgemini. Served as both director and on-screen talent.",tags:['Premiere Pro','Video Production','DEI','REN']}
   ]},
   flex:{cat:'MOTION DESIGN // ANIMATION',title:'Capgemini Flex Animation',desc:'I was tasked with creating an animation to detail the flex benefits available to all Capgemini staff. I had a lot of fun making this, especially without a lot of previous experience in animation!',items:[
-    {img:null,title:'Flex Benefits Explainer Animation',desc:'An animated explainer detailing the Flex benefits package available to all Capgemini staff &mdash; a rewarding challenge that pushed my skills into motion design and animation.',tags:['After Effects','Animation','Motion Design']}
+    {img:'https://img.youtube.com/vi/vjpkkDWBAQQ/maxresdefault.jpg',watch:'https://youtu.be/vjpkkDWBAQQ',title:'Flex Benefits Explainer Animation',desc:'An animated explainer detailing the Flex benefits package available to all Capgemini staff &mdash; a rewarding challenge that pushed my skills into motion design and animation.',tags:['After Effects','Animation','Motion Design']}
   ]},
   esportsvid:{cat:'VIDEO EDITING // EVENT PRODUCTION',title:'Capgemini e-Sports Tournament',desc:'In the aftermath of an e-Sports tournament I hosted for colleagues, I made a fun little summary video to showcase the event in the hopes of making a good case to host more tournaments in the future.',items:[
-    {img:null,title:'E-Sports Tournament Summary Video',desc:'An energetic summary video produced following the Capgemini E-Sports Tournament I hosted &mdash; capturing the atmosphere and highlights to build the case for making it a regular fixture.',tags:['Premiere Pro','Video Editing','Event Production']}
+    {img:'https://img.youtube.com/vi/aWPZUOY9Q3I/maxresdefault.jpg',watch:'https://youtu.be/aWPZUOY9Q3I',title:'E-Sports Tournament Summary Video',desc:'An energetic summary video produced following the Capgemini E-Sports Tournament I hosted &mdash; capturing the atmosphere and highlights to build the case for making it a regular fixture.',tags:['Premiere Pro','Video Editing','Event Production']}
   ]},
   podcast:{cat:'VIDEO PRODUCTION // EDUCATION',title:'In Living Colours Podcast',desc:"As a part of the education stream in Capgemini's Race &amp; Equality network, we took to making a video podcast to help educate the viewer on different cultures. All footage was recorded via Teams and I am very proud of the result given the limitations!",items:[
-    {img:null,title:'In Living Colours &mdash; Video Podcast Series',desc:"A video podcast series produced as part of REN's education stream. Recorded entirely over Microsoft Teams &mdash; extremely proud of what was achieved within those constraints.",tags:['Premiere Pro','Video Production','Podcast','DEI','REN']}
+    {img:'https://img.youtube.com/vi/g96rDo0epWQ/maxresdefault.jpg',watch:'https://youtu.be/g96rDo0epWQ',title:'In Living Colours &mdash; Video Podcast Series',desc:"A video podcast series produced as part of REN's education stream. Recorded entirely over Microsoft Teams &mdash; extremely proud of what was achieved within those constraints.",tags:['Premiere Pro','Video Production','Podcast','DEI','REN']}
   ]},
   daylife:{cat:'INTERACTIVE PRESENTATION // DEI',title:'A Day in Your Life: A Black Experience',desc:"An interactive scenario-based presentation with branching narrative paths, designed to immerse participants in the day-to-day experiences of Black colleagues. All paths are based on real-life examples.",items:[
     {img:null,title:'Scenario I &mdash; A Black Experience',desc:'Walking participants through a day as a Black employee and presenting branching choices that reveal real consequences of workplace bias, microaggressions and systemic barriers.',tags:['PowerPoint','Interactive Design','DEI','REN']}
@@ -536,6 +538,7 @@ function openProject(id){
     else{h+='<div class="pm-placeholder"><span>// IMAGE COMING SOON</span></div>';}
     h+='</div><div class="pm-img-info"><div class="pm-img-num">// '+num+'</div><div class="pm-img-title">'+it.title+'</div><div class="pm-img-desc">'+it.desc+'</div>';
     if(it.tags){h+='<div class="pm-tags">';for(var j=0;j<it.tags.length;j++)h+='<span class="pm-tag">'+it.tags[j]+'</span>';h+='</div>';}
+    if(it.watch){h+='<a class="pm-watch" href="'+it.watch+'" target="_blank" rel="noopener">Watch on YouTube &nbsp;&#8599;</a>';}
     h+='</div></div>';
   }
   h+='</div>';
